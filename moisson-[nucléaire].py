@@ -25,14 +25,16 @@ page = BeautifulSoup(contenu.text, "html.parser")
 
     
 for ligne in page.find_all("tr")[1:]:
+    contrat = []
     debut = "http://www.suretenucleaire.gc.ca/fra/transparency/"
     lien = debut + ligne.a["href"]
     print(lien)
+    contrat.append(lien)
     
     fich = "contrats-nuke1.csv"
     achille = open(fich,"a")
     talon = csv.writer(achille)
-    talon.writerow(lien)
+    talon.writerow(contrat)
     
 
 
